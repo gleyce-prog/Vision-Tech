@@ -160,35 +160,28 @@
       return isValid;
     }
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
 
-      if (!form.checkValidity()) {
-        return;
-      }
 
-      const formData = new FormData(form);
-      const endpoint = 'https://api.sheetmonkey.io/form/b7MWvKdMDMMvV9DsEVNyBW';
 
-      fetch(endpoint, {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          // Formulário enviado com sucesso
-          alert('Formulário enviado com sucesso!');
-        } else {
-          // Erro ao enviar o formulário
-          alert('Erro ao enviar o formulário. Por favor, tente novamente.');
-        }
-      })
-      .catch(error => {
-        console.error('Erro ao enviar o formulário:', error);
-        alert('Erro ao enviar o formulário. Por favor, tente novamente.');
-      });
-    });
-  </script>
+
+function alternarVisibilidade(valorSelecionado) {
+  var elemento = document.getElementById('meuElemento');
+  var campoInput = document.getElementById('comprovante');
+
+  if (valorSelecionado === 'cadunico') {
+    campoInput.required = true;
+    elemento.style.display = 'block';
+    alert('Por favor, anexe o comprovante de renda e o comprovante de cadastro.');
+  } else {
+    campoInput.required = false;
+    alert('Não precisa passar pela etapa de anexar o comprovante de renda e comprovante de cadastro.');
+    elemento.style.display = 'none';
+  }
+}
+
+
+
+</script>
 </head>
 <body>
   <header>
@@ -213,44 +206,37 @@
         </ul>
     </nav>	
 </center>
-    
+<hr>
 </header>
-    <hr>	
-    <main>
-      
+<hr>	
   
-</head>
-<body>
-  
-            <br/><br/><br/><br/>
+ <br/><br/><br/><br/>
   <div class="container">
     <form>
       <div class="topic-text">Orçamento</div>
       <br/><br/>
     </form>
-    
     <div class="tabs">
       <button class="tab-button active" onclick="changeTab(event, 'personal-data')">Dados Pessoais</button>
       <button class="tab-button" onclick="changeTab(event, 'address')">Endereço</button>
       <button class="tab-button" onclick="changeTab(event, 'payment')">Forma de Pagamento</button>
       <button class="tab-button" onclick="changeTab(event, 'income')">Comprovação de Renda</button>
     </div>
-    <form id="form" onsubmit="submitForm(event)">
+    <form action="https://api.sheetmonkey.io/form/b7MWvKdMDMMvV9DsEVNyBW" method="post">
       <div id="personal-data" class="tab-content active">
-        <input type="text" required placeholder="Nome" >
-        <input type="email" required placeholder="Email" required pattern="[A-Za-z]{1-15}@[A-Za-z]{1-10}.[A-Za-z]{3}" title="email inválido, exemplo XXXXX@XXX.com">
-        <input type="text" required placeholder="CPF"  pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[1-9]{2}" title="cpf, exemplo XXX.XXX.XXX-XX">
-        <input type="tel" required placeholder="Telefone" type ="tel" size="13" pattern="[0-9]{2}-[0-9]{5}-[1-9]{4}" title="celular inválido, exemplo (XX-XXXXX-XXXX)"placeholder="Digite seu celular">
+        <input name="Nome" type="text" required placeholder="Nome" >
+        <input name="email" type="email" required placeholder="Email" required title="email inválido, exemplo XXXXX@XXX.com">
+        <input name="cpf" type="text" required placeholder="CPF"  pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[1-9]{2}" title="cpf, exemplo XXX.XXX.XXX-XX">
+        <input name="Telefone" type="tel" required placeholder="Telefone" pattern="[0-9]{11}" title="celular inválido, somente números">
         <button type="button" onclick="nextTab('personal-data', 'address')">Próximo</button>
       </div>
       <div id="address" class="tab-content">
-        <input type="text" placeholder="CEP" required pattern="[0-9]{5}-[0-9]{3}" title="cep inválido, exemplo XXXXX.XXX">
+        <input name="cep" type="text" placeholder="CEP" required pattern="[0-9]{5}-[0-9]{3}" title="cep inválido, exemplo XXXXX.XXX">
         <button type="button"onclick="previousTab('address', 'personal-data')">Anterior</button>
         <button type="button" onclick="nextTab('address', 'payment')">Próximo</button>
       </div>
       <div id="payment" class="tab-content">
-        <select required>
-          <option value="">Selecione a Forma de Pagamento</option>
+        <select id="forma-pagamento" name="forma-pagamento" required onchange="alternarVisibilidade(this.value)">
           <option value="credit-card">Cartão de Crédito</option>
           <option value="debit-card">Cartão de Débito</option>
           <option value="pix">Pix</option>
@@ -261,13 +247,17 @@
         <button type="button" onclick="previousTab('payment', 'address')">Anterior</button>
         <button type="button" onclick="nextTab('payment', 'income')">Próximo</button>
       </div>
-      <div id="income" class="tab-content">
-        <input type="file" accept=".pdf,.doc,.docx">
-        <br/><br/><br/>
+      <div id="income" class="tab-content" >
+          <div id="meuElemento">
+            <label for="comprovante-cadastro">Comprovante de Renda:</label>
+            <input name="comprovante-renda" type="file" id="comprovante"  accept=".pdf,.doc,.docx">
+            <br/><br/><br/>
+            <label for="comprovante-cadastro">Comprovante do Cadastro Único:</label>
+            <input  name="comprovante-cadastro"  type="file" id="comprovante"  accept=".pdf,.doc,.docx">
+          </div>
         <button type="button" onclick="previousTab('income', 'payment')">Anterior</button>
         <button type="submit">Enviar</button>
       </div>
-      
     </form>
   </div>
   </main>
@@ -282,16 +272,16 @@
             <div id="footer_social_media">
           
                 <a href="https://www.instagram.com/" class="footer-link" id="instagram">
-                    <img src="insta.png" width="30" height="30">
+                    <img src="../icones/insta.png" width="30" height="30">
                 </a>
   
                 <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new" class="footer-link" id="gmail">
-                    <img src="gmail.png" width="30" height="30">
+                    <img src="../icones/gmail.png" width="30" height="30">
                 </a>
   
                 <a href="whatsapp.html" class="footer-link" id="whatsapp">
-                        <img src="zap.png" width="30" height="30">
-                    </a>
+                    <img src="../icones/zap.png" width="30" height="30">
+                </a>
                    
                 </div>
         </div>
@@ -332,10 +322,12 @@
             </p>
 
             <div id="input_group">
-                <input type="email" id="email">
-                <button>
-                    <i class="fa-regular fa-envelope">Enviar</i>
-                </button>
+              <form action="https://api.sheetmonkey.io/form/oLnP8WS36w27gtjNgUqMR8" method="post">
+                <input type="email" id="campo-email" placeholder="Digite seu e-mail">
+                  <button type="submit" id="botao-enviar">Enviar</button>
+              </input>
+              </form>
+              
             </div>
         </div>
     </div>
@@ -347,3 +339,4 @@
 </footer>
 </body>
 </html>
+
