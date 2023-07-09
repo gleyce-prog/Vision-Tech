@@ -162,6 +162,44 @@ h2{
  }
 }    
     </style>
+    <script>
+      function inscrever() {
+        var emailInput = document.getElementById('email');
+        var email = emailInput.value;
+        if (isValidEmail(email)) {
+          enviarEmail(email);
+        } else {
+          alert('Por favor, insira um email válido.');
+        }
+      }
+  
+      function enviarEmail(email) {
+        var url = 'https://api.sheetmonkey.io/form/oLnP8WS36w27gtjNgUqMR8';
+  
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+  
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            alert('Inscrição realizada com sucesso!');
+          } else {
+            alert('Ocorreu um erro ao realizar a inscrição. Por favor, tente novamente.');
+          }
+        };
+  
+        xhr.onerror = function() {
+          alert('Ocorreu um erro ao realizar a inscrição. Por favor, tente novamente.');
+        };
+  
+        var dados = JSON.stringify({ email: email });
+        xhr.send(dados);
+      }
+  
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+    </script>
 </head>
 <body>
     <header>
@@ -303,12 +341,8 @@ h2{
               receber novidades!
           </p>
 
-          <div id="input_group">
-              <input type="email" id="email">
-              <button>
-                  <i class="fa-regular fa-envelope">Enviar</i>
-              </button>
-          </div>
+          <input type="email" id="email" placeholder="Digite seu email">
+    <button onclick="inscrever()">Inscrever</button>
       </div>
   </div>
 
