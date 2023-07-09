@@ -1,0 +1,31 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+#menu-h{
+    list-style: none;
+    padding: 0;
+    background-color: black;
+}
+#menu-h li{
+    display: inline;
+}
+
+#menu-h li a{
+    color: white;
+    padding: 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#menu-h li a:hover{
+    background-color: green;
+}
+
+#menu-h li:last-child a{
+    float: right;
+    background-color: green;
+}
