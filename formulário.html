@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="logo.png">
+  <title>Vision Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 700px;
+      height: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .tabs {
+      margin-bottom: 20px;
+    }
+
+    .tabs button {
+      background-color: #ccc;
+      border: none;
+      color: #000;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .tabs button.active {
+      background-color: #90562E;;
+      color: #fff;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"]{
+      background-color: #90562E;;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    button{
+      background-color: #90562E;;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .required {
+      color: red;
+    }
+   input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: #F0F1F8;
+    border-radius: 6px;
+    padding: 0 15px;
+    resize: none;
+    }
+    .topic-text{
+      text-align: center;
+      font-size: 23px;
+    font-weight: 600;
+    color: #90562E;
+  }
+  .container {
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px 40px 30px 40px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  </style>
+  <script>
+    const form = document.getElementById('form');
+    const tabButtons = document.getElementsByClassName('tab-button');
+    const tabContents = document.getElementsByClassName('tab-content');
+    let currentTab = 0;
+
+    function changeTab(event, tabName) {
+      const currentIndex = Array.from(tabButtons).indexOf(event.target);
+      if (currentIndex < currentTab) {
+        for (let i = currentIndex + 1; i <= currentTab; i++) {
+          if (!validateTab(tabContents[i])) {
+            return;
+          }
+        }
+      }
+
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+        tabContents[i].classList.remove('active');
+      }
+
+      event.target.classList.add('active');
+      document.getElementById(tabName).classList.add('active');
+
+      currentTab = currentIndex;
+    }
+
+    function nextTab(currentTabName, nextTabName) {
+      const currentTabContent = document.getElementById(currentTabName);
+      const nextTabContent = document.getElementById(nextTabName);
+
+      if (!validateTab(currentTabContent)) {
+        return;
+      }
+
+      changeTab({ target: nextTabContent }, nextTabName);
+    }
+
+    function previousTab(currentTabName, previousTabName) {
+      const currentTabContent = document.getElementById(currentTabName);
+      const previousTabContent = document.getElementById(previousTabName);
+
+      if (!validateTab(currentTabContent)) {
+        return;
+      }
+
+      changeTab({ target: previousTabContent }, previousTabName);
+    }
+
+    function validateTab(tabContent) {
+      const inputs = tabContent.querySelectorAll('input[required], select[required]');
+      let isValid = true;
+
+      inputs.forEach(input => {
+        if (!input.checkValidity()) {
+          input.reportValidity();
+          isValid = false;
+        }
+      });
+
+      return isValid;
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        return;
+      }
+
+      const formData = new FormData(form);
+      const endpoint = 'https://api.sheetmonkey.io/form/b7MWvKdMDMMvV9DsEVNyBW';
+
+      fetch(endpoint, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          // Formulário enviado com sucesso
+          alert('Formulário enviado com sucesso!');
+        } else {
+          // Erro ao enviar o formulário
+          alert('Erro ao enviar o formulário. Por favor, tente novamente.');
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao enviar o formulário:', error);
+        alert('Erro ao enviar o formulário. Por favor, tente novamente.');
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo"><img src="logo.png" height="90" width="100%"></a>
+    <center>
+    <nav>
+        <ul>
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <a class="menu__link" href="index.html" title="Home">Início</a>
+                </li>
+                <li class="menu__item">
+                    <a class="menu__link" href="produtos.html" title="Produtos">Produtos</a>
+                </li>	
+                <li class="menu__item">
+                    <a class="menu__link" href="quem-somos.html" title="Quem somos">Quem somos</a>
+                </li>																		
+                <li class="menu__item">
+                    <a class="menu__link" href="contato.html" title="Contato">Contato</a>
+                </li>
+            </ul>
+        </ul>
+    </nav>	
+</center>
+    
+</header>
+    <hr>	
+    <main>
+      
+  
+</head>
+<body>
+  
+            <br/><br/><br/><br/>
+  <div class="container">
+    <form>
+      <div class="topic-text">Orçamento</div>
+      <br/><br/>
+    </form>
+    
+    <div class="tabs">
+      <button class="tab-button active" onclick="changeTab(event, 'personal-data')">Dados Pessoais</button>
+      <button class="tab-button" onclick="changeTab(event, 'address')">Endereço</button>
+      <button class="tab-button" onclick="changeTab(event, 'payment')">Forma de Pagamento</button>
+      <button class="tab-button" onclick="changeTab(event, 'income')">Comprovação de Renda</button>
+    </div>
+    <form id="form" onsubmit="submitForm(event)">
+      <div id="personal-data" class="tab-content active">
+        <input type="text" required placeholder="Nome" >
+        <input type="email" required placeholder="Email" required pattern="[A-Za-z]{1-15}@[A-Za-z]{1-10}.[A-Za-z]{3}" title="email inválido, exemplo XXXXX@XXX.com">
+        <input type="text" required placeholder="CPF"  pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[1-9]{2}" title="cpf, exemplo XXX.XXX.XXX-XX">
+        <input type="tel" required placeholder="Telefone" pattern="[0-9]{11}" title="celular inválido, somente números">
+        <button type="button" onclick="nextTab('personal-data', 'address')">Próximo</button>
+      </div>
+      <div id="address" class="tab-content">
+        <input type="text" placeholder="CEP" required pattern="[0-9]{5}-[0-9]{3}" title="cep inválido, exemplo XXXXX.XXX">
+        <button type="button"onclick="previousTab('address', 'personal-data')">Anterior</button>
+        <button type="button" onclick="nextTab('address', 'payment')">Próximo</button>
+      </div>
+      <div id="payment" class="tab-content">
+        <select required>
+          <option value="">Selecione a Forma de Pagamento</option>
+          <option value="credit-card">Cartão de Crédito</option>
+          <option value="debit-card">Cartão de Débito</option>
+          <option value="pix">Pix</option>
+          <option value="boleto">Boleto Bancário</option>
+          <option value="cadunico">CadÚnico</option>
+        </select>
+        <br/><br/><br/>
+        <button type="button" onclick="previousTab('payment', 'address')">Anterior</button>
+        <button type="button" onclick="nextTab('payment', 'income')">Próximo</button>
+      </div>
+      <div id="income" class="tab-content">
+        <input type="file" accept=".pdf,.doc,.docx">
+        <br/><br/><br/>
+        <button type="button" onclick="previousTab('income', 'payment')">Anterior</button>
+        <button type="submit">Enviar</button>
+      </div>
+      
+    </form>
+  </div>
+  </main>
+  <br/><br/>
+  <hr>
+  <footer>
+    <div id="footer_content">
+        <div id="footer_contacts">
+            <h1>Vision Tech</h1>
+            <p>Acreditamos nos seus sonhos.</p>
+
+            <div id="footer_social_media">
+          
+                <a href="https://www.instagram.com/" class="footer-link" id="instagram">
+                    <img src="../icones/insta.png" width="30" height="30">
+                </a>
+  
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new" class="footer-link" id="gmail">
+                    <img src="../icones/gmail.png" width="30" height="30">
+                </a>
+  
+                <a href="index.html" class="footer-link" id="whatsapp">
+                    <img src="../icones/zap.png" width="30" height="30">
+                </a>
+                   
+                </div>
+        </div>
+        
+        <ul class="footer-list">
+            <li>
+                <h3>Páginas</h3>
+            </li>
+            <li>
+                <a href="quem-somos.html" class="footer-link">Quem Somos</a>
+            </li>
+            <li>
+                <a href="contato.html" class="footer-link">Contato</a>
+            </li>
+            <li>
+                <a href="produtos.html" class="footer-link">Produtos</a>
+            </li>
+        </ul>
+
+        <ul class="footer-list">
+            <li>
+                <h3>Parcerias</h3>
+            </li>
+            <li>
+                <a href="https://www.caixa.gov.br/servicos/cadastro-unico/Paginas/default.aspx" class="footer-link">CadÚnico</a>
+            </li>
+            <li>
+                <a href="https://www.mg.gov.br/" class="footer-link">Governo de Minas</a>
+            </li>
+        </ul>
+
+        <div id="footer_subscribe">
+            <h3>Inscreva</h3>
+
+            <p>
+                Cadastre seu e-mail para 
+                receber novidades!
+            </p>
+
+            <div id="input_group">
+                <input type="email" id="email">
+                <button>
+                    <i class="fa-regular fa-envelope">Enviar</i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footer_copyright">
+        <p class="copy">&copy; 2023 Vision Tech Inc. Todos os direitos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>

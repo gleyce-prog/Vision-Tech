@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vision Tech</title>
+    <meta charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="icon" href="logo.png" />
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+        }
+    
+        .container {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+    
+        .glasses {
+          display: flex;
+          align-items: center;
+        }
+    
+        .glasses-image {
+          flex-basis: 40%;
+          margin-right: 20px;
+        }
+    
+        .glasses-image img {
+          width: 100%;
+          max-width: 300px;
+          height: auto;
+          border-radius: 5px;
+          object-fit: cover;
+        }
+    
+        .glasses-info {
+          flex-basis: 60%;
+        }
+    
+        .glasses-info h2 {
+          margin-top: 0;
+        }
+    
+        .glasses-info p {
+          margin-bottom: 10px;
+        }
+    
+        .glasses-rating {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+        }
+    
+        .glasses-rating .star {
+          color: #fdd835;
+          margin-right: 5px;
+        }
+    
+        .tabs {
+          display: flex;
+          margin-top: 20px;
+        }
+    
+        .tab-button {
+          flex-basis: 50%;
+          padding: 10px;
+          background-color: #eee;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+    
+        .tab-button.active {
+          background-color: #333;
+          color: #fff;
+        }
+    
+        .tab-content {
+          display: none;
+          margin-top: 20px;
+        }
+    
+        .tab-content.active {
+          display: block;
+        }
+      </style>
+    
+      
+  <script>
+    function changeTab(tabIndex) {
+      const tabButtons = document.getElementsByClassName('tab-button');
+      const tabContents = document.getElementsByClassName('tab-content');
+
+      // Remove a classe 'active' de todos os botões e conteúdos
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+        tabContents[i].classList.remove('active');
+      }
+
+      // Adiciona a classe 'active' ao botão e conteúdo selecionados
+      tabButtons[tabIndex].classList.add('active');
+      tabContents[tabIndex].classList.add('active');
+    }
+  </script>
+
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><img src="logo.png" height="90" width="100%"></a>
+        <center>
+        <nav>
+            <ul>
+                <ul class="menu__list">
+                    <li class="menu__item">
+                        <a class="menu__link" href="index.html" title="Home">Início</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="produtos.html" title="Produtos">Produtos</a>
+                    </li>	
+                    <li class="menu__item">
+                        <a class="menu__link" href="quem-somos.html" title="Quem somos">Quem somos</a>
+                    </li>																		
+                    <li class="menu__item">
+                        <a class="menu__link" href="contato.html" title="Contato">Contato</a>
+                    </li>
+                </ul>
+            </ul>
+        </nav>	
+    </center>
+        
+    </header>
+    <hr>
+    <main>
+
+  <div class="container">
+    <br/><br/><br/><br/><br/>
+    <div class="glasses">
+      <div class="glasses-image">
+        <img src="oculos.jpg" alt="Óculos" width="300" height="300>
+      </div>
+      <div class="glasses-info">
+        <h2>Ecos Glasses</h2>
+       
+        <div class="glasses-rating">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span>Avaliações: 5 estrelas</span> 
+          <br/><br/><br/>
+          <button><a href="formulário.html"><p>Orçamento</p></a></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-button active" onclick="changeTab(0)">Especificações</button>
+      <button class="tab-button" onclick="changeTab(1)">Funções</button>
+    </div>
+
+    <div class="tab-content active">
+    
+        <ul>
+          <p><b>Material da armação:</b> Bambu.</p>
+          <p><b>Cor: </b>Preto</p>
+          <p><b>Garantia:</b> 5 meses.</p>
+          <p><b>Embalagem:</b>Armação, Manual de instrução, Cabo entrada type-C, Carregador, Estojo do óculos.</p>
+        </ul>
+      </div>
+
+      <div class="tab-content">
+        
+        <ul>
+          <li>GPS</li>
+          <li>Assistente de Voz</li>
+          <li>Leitor de imagens e cores</li>
+          <li>Reconhecimento de obstaculos da rua</li>
+          <li>Sensor de movimento</li>
+          <li>Conectividade com dispositivos móveis.</li>
+        </ul>
+      </div>
+  </div>
+        <br/><br/><br/><br/><br/>
+    </main>
+    <br/><br/>
+    <hr>
+    <footer>
+      <div id="footer_content">
+          <div id="footer_contacts">
+              <h1>Vision Tech</h1>
+              <p>Acreditamos nos seus sonhos.</p>
+
+              <div id="footer_social_media">
+            
+                  <a href="https://www.instagram.com/" class="footer-link" id="instagram">
+                      <img src="../icones/insta.png" width="30" height="30">
+                  </a>
+    
+                  <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new" class="footer-link" id="gmail">
+                      <img src="../icones/gmail.png" width="30" height="30">
+                  </a>
+    
+                  <a href="index.html" class="footer-link" id="whatsapp">
+                      <img src="../icones/zap.png" width="30" height="30">
+                  </a>
+                     
+                  </div>
+          </div>
+          
+          <ul class="footer-list">
+              <li>
+                  <h3>Páginas</h3>
+              </li>
+              <li>
+                  <a href="quem-somos.html" class="footer-link">Quem Somos</a>
+              </li>
+              <li>
+                  <a href="contato.html" class="footer-link">Contato</a>
+              </li>
+              <li>
+                  <a href="produtos.html" class="footer-link">Produtos</a>
+              </li>
+          </ul>
+
+          <ul class="footer-list">
+              <li>
+                  <h3>Parcerias</h3>
+              </li>
+              <li>
+                  <a href="https://www.caixa.gov.br/servicos/cadastro-unico/Paginas/default.aspx" class="footer-link">CadÚnico</a>
+              </li>
+              <li>
+                  <a href="https://www.mg.gov.br/" class="footer-link">Governo de Minas</a>
+              </li>
+          </ul>
+
+          <div id="footer_subscribe">
+              <h3>Inscreva</h3>
+
+              <p>
+                  Cadastre seu e-mail para 
+                  receber novidades!
+              </p>
+
+              <div id="input_group">
+                  <input type="email" id="email">
+                  <button>
+                      <i class="fa-regular fa-envelope">Enviar</i>
+                  </button>
+              </div>
+          </div>
+      </div>
+
+  
+      <div id="footer_copyright">
+          <p class="copy">&copy; 2023 Vision Tech Inc. Todos os direitos reservados.</p>
+      </div>
+  </footer>
+  </body>
+  </html>
+  
