@@ -69,10 +69,12 @@
           border: none;
           border-radius: 5px;
           cursor: pointer;
+          flex: 0 0 auto;
+          text-align: center;
         }
     
         .tab-button.active {
-          background-color: #333;
+          background-color: #90562E;
           color: #fff;
         }
     
@@ -83,6 +85,23 @@
     
         .tab-content.active {
           display: block;
+        }
+                .tabs, .tab-content.active , .tab-content{
+          flex: 0 0 auto;
+          text-align: center;
+        }
+         ul{
+        text-align: left;
+      }
+        .buy-button {
+          display: inline-block;
+          text-align: center;
+          background-color: #90562E;
+          color: #fff;
+          font-size: 16px;
+          text-decoration: none;
+          border-radius: 4px;
+          transition: background-color 0.3s ease;
         }
       </style>
     
@@ -175,35 +194,28 @@
         <h2>Ecos Glasses</h2>
        
         <div class="glasses-rating">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span>Avaliações: 5 estrelas</span> 
-          <br/><br/><br/>
           <button><a href="formulário.html"><p>Orçamento</p></a></button>
         </div>
       </div>
     </div>
 
+    <center>
     <div class="tabs">
       <button class="tab-button active" onclick="changeTab(0)">Especificações</button>
       <button class="tab-button" onclick="changeTab(1)">Funções</button>
+      <button class="tab-button" onclick="changeTab(2)">Avaliações</button>
     </div>
 
     <div class="tab-content active">
-    
         <ul>
           <p><b>Material da armação:</b> Bambu.</p>
           <p><b>Cor: </b>Preto</p>
           <p><b>Garantia:</b> 5 meses.</p>
           <p><b>Embalagem:</b>Armação, Manual de instrução, Cabo entrada type-C, Carregador, Estojo do óculos.</p>
         </ul>
-      </div>
+    </div>
 
-      <div class="tab-content">
-        
+    <div class="tab-content">
         <ul>
           <li>GPS</li>
           <li>Assistente de Voz</li>
@@ -212,7 +224,21 @@
           <li>Sensor de movimento</li>
           <li>Conectividade com dispositivos móveis.</li>
         </ul>
-      </div>
+    </div>
+    <div class="tab-content">
+        <ul>
+          <p><span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </p>
+          <p><b>
+            <span>Avaliações: 5 estrelas</span> 
+          </p></b>
+        </ul>
+    </div>
+  </center>
   </div>
         <br/><br/><br/><br/><br/>
     </main>
