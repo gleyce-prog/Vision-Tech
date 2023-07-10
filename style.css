@@ -97,12 +97,12 @@ footer {
 }
 
 .footer-list .footer-link {
-  color: var(--color-neutral-30);
+  color: black;
   transition: all 0.4s;
 }
 
 .footer-list .footer-link:hover {
-  color: #7f37c9;
+  color: #90562E;
 }
 
 #footer_subscribe {
@@ -129,7 +129,7 @@ footer {
 }
 
 #input_group button {
-  background-color: #7f37c9;
+  background-color: #98857E;
   border: none;
   color: var(--color-neutral-40);
   padding: 0px 1.25rem;
