@@ -1,62 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vision Tech</title>
+  <title>Vision Tech</title>
     <meta charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="icon" href="logo.png" />
-    <style>
-        body {
-          font-family: Arial, sans-serif;
-        }
-    
-        .container {
-          max-width: 960px;
-          margin: 0 auto;
-          padding: 20px;
-        }
-    
-        .glasses {
-          display: flex;
-          align-items: center;
-        }
-    
-        .glasses-image {
-          flex-basis: 40%;
-          margin-right: 20px;
-        }
-    
-        .glasses-image img {
-          width: 100%;
-          max-width: 300px;
-          height: auto;
-          border-radius: 5px;
-          object-fit: cover;
-        }
-    
-        .glasses-info {
-          flex-basis: 60%;
-        }
-    
-        .glasses-info h2 {
-          margin-top: 0;
-        }
-    
-        .glasses-info p {
-          margin-bottom: 10px;
-        }
-    
-        .glasses-rating {
-          display: flex;
-          align-items: center;
-          margin-bottom: 10px;
-        }
-    
-        .glasses-rating .star {
-          color: #fdd835;
-          margin-right: 5px;
-        }
-    
+  <style>
+     body, html {
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
         .tabs {
           display: flex;
           margin-top: 20px;
@@ -86,26 +41,64 @@
         .tab-content.active {
           display: block;
         }
-                .tabs, .tab-content.active , .tab-content{
+          .tabs, .tab-content.active , .tab-content{
           flex: 0 0 auto;
           text-align: center;
+          align-itens: center;
         }
          ul{
         text-align: left;
       }
-        .buy-button {
+        .budget-button {
           display: inline-block;
           text-align: center;
-          background-color: #90562E;
+          background-color:  #90562E;
           color: #fff;
           font-size: 16px;
           text-decoration: none;
           border-radius: 4px;
           transition: background-color 0.3s ease;
         }
-      </style>
-    
-      
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.image-container {
+  flex: 0 0 40%;
+  margin-right: 20px;
+}
+
+.image-container img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.content-container {
+  flex: 0 0 60%;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+
+
+  </style>
   <script>
     function changeTab(tabIndex) {
       const tabButtons = document.getElementsByClassName('tab-button');
@@ -154,7 +147,6 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       }
   </script>
-
 </head>
 <body>
     <header>
@@ -181,25 +173,17 @@
     </center>
         
     </header>
-    <hr>
-    <main>
-
   <div class="container">
-    <br/><br/><br/><br/><br/>
-    <div class="glasses">
-      <div class="glasses-image">
-        <img src="oculos.jpg" alt="Óculos" width="300" height="300>
-      </div>
-      <div class="glasses-info">
-        <h2>Ecos Glasses</h2>
-       
-        <div class="glasses-rating">
-          <button><a href="formulário.html"><p>Orçamento</p></a></button>
-        </div>
-      </div>
+    <div class="image-container">
+      <img src="oculos.jpg" alt="Óculos Eco">
     </div>
-
-    <center>
+    <div class="content-container">
+      <h2>Eco Glasses</h2>
+      <p>O melhor do mercado</p>
+      <button class="budget-button"><a href="oculos.html">Orçamento</a></button>
+    </div>
+  </div>
+  <center>
     <div class="tabs">
       <button class="tab-button active" onclick="changeTab(0)">Especificações</button>
       <button class="tab-button" onclick="changeTab(1)">Funções</button>
@@ -314,7 +298,7 @@
           <p class="copy">&copy; 2023 Vision Tech Inc. Todos os direitos reservados.</p>
       </div>
   </footer>
-  </body>
-  </html>
-  
+</body>
+</html>
+
   
