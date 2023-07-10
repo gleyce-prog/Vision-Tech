@@ -160,26 +160,56 @@
       return isValid;
     }
 
+  function alternarVisibilidade(valorSelecionado) {
+    var elemento = document.getElementById('meuElemento');
+    var campoInput = document.getElementById('comprovante');
 
-
-
-
-function alternarVisibilidade(valorSelecionado) {
-  var elemento = document.getElementById('meuElemento');
-  var campoInput = document.getElementById('comprovante');
-
-  if (valorSelecionado === 'cadunico') {
-    campoInput.required = true;
-    elemento.style.display = 'block';
-    alert('Por favor, anexe o comprovante de renda e o comprovante de cadastro.');
-  } else {
-    campoInput.required = false;
-    alert('Não precisa passar pela etapa de anexar o comprovante de renda e comprovante de cadastro.');
-    elemento.style.display = 'none';
+    if (valorSelecionado === 'cadunico') {
+      campoInput.required = true;
+      elemento.style.display = 'block';
+      alert('Por favor, anexe o comprovante de renda e o comprovante de cadastro.');
+    } else {
+      campoInput.required = false;
+      alert('Não precisa passar pela etapa de anexar o comprovante de renda e comprovante de cadastro.');
+      elemento.style.display = 'none';
+    }
   }
-}
-
-
+    function inscrever() {
+        var emailInput = document.getElementById('email');
+        var email = emailInput.value;
+        if (isValidEmail(email)) {
+          enviarEmail(email);
+        } else {
+          alert('Por favor, insira um email válido.');
+        }
+      }
+  
+      function enviarEmail(email) {
+        var url = 'https://api.sheetmonkey.io/form/oLnP8WS36w27gtjNgUqMR8';
+  
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+  
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            alert('Inscrição realizada com sucesso!');
+          } else {
+            alert('Ocorreu um erro ao realizar a inscrição. Por favor, tente novamente.');
+          }
+        };
+  
+        xhr.onerror = function() {
+          alert('Ocorreu um erro ao realizar a inscrição. Por favor, tente novamente.');
+        };
+  
+        var dados = JSON.stringify({ email: email });
+        xhr.send(dados);
+      }
+  
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
 
 </script>
 </head>
@@ -322,11 +352,9 @@ function alternarVisibilidade(valorSelecionado) {
             </p>
 
             <div id="input_group">
-              <form action="https://api.sheetmonkey.io/form/oLnP8WS36w27gtjNgUqMR8" method="post">
-                <input type="email" id="campo-email" placeholder="Digite seu e-mail">
-                  <button type="submit" id="botao-enviar">Enviar</button>
-              </input>
-              </form>
+                <input type="email" id="email" placeholder="Digite seu email">
+                 <button onclick="inscrever()">Inscrever</button>
+            </div>
               
             </div>
         </div>
