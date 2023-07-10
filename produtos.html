@@ -10,7 +10,7 @@
         img.banner{
             margin-top: 5%;
             width:95%;
-            height:400px;
+            height:500px;
             border: solid black;
         }
         tr, td, figcaption,figure{
@@ -181,26 +181,31 @@
         
     </header>
       <hr>
-   <main>
-      <div class="banner">
-          <img src="banner.png" >
-      </div>
-        <br>
+    <main>
+        <section>
+            <div id="banner">
+                <center>
+                    <img class="banner" src="banner.png" />	
+                </center>
+                <br/><br/>
+            </div> 
+        </section>
+        <section>
+            <center>
+<hr><br/><br/><br/>
+  <section class="introducao">
+    <h2>Lançamentos:</h2>
+    <hr width="350px">
+  </section>
   
-    </main>
-    <section>
-      <center>
-        <hr><br/><br/><br/>
-          <section class="introducao">
-            <h2>LANÇAMENTOS</h2>
-            <hr width="350px">
-          </section>
+
+  
   <section class="products">
     <div class="product">
       <img src="oculos.jpg" alt="Óculos 1" width="250" height="180">
       <h3>Ecos Glasses</h3>
       <p>Biodegradavél, armação resistente e design moderno.</p>
-      <p class="pr>Orçamento</p>
+      <p class="price">Orçamento</p>
       <a href="ecosglasses.html" class="buy-button">Comprar</a>
     </div>
     <div class="product">
@@ -291,33 +296,5 @@
           <p class="copy">&copy; 2023 Vision Tech Inc. Todos os direitos reservados.</p>
       </div>
   </footer>
-          <script>
-  let slideIndex = 1;
-  showSlides(slideIndex);
-  
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-  
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-  
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-  }
-  </script>
 </body>
-</html>
+                      </html>
