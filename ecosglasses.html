@@ -91,14 +91,10 @@
     function changeTab(tabIndex) {
       const tabButtons = document.getElementsByClassName('tab-button');
       const tabContents = document.getElementsByClassName('tab-content');
-
-      // Remove a classe 'active' de todos os botões e conteúdos
       for (let i = 0; i < tabButtons.length; i++) {
         tabButtons[i].classList.remove('active');
         tabContents[i].classList.remove('active');
       }
-
-      // Adiciona a classe 'active' ao botão e conteúdo selecionados
       tabButtons[tabIndex].classList.add('active');
       tabContents[tabIndex].classList.add('active');
     }
@@ -244,12 +240,10 @@
                   receber novidades!
               </p>
 
-              <div id="input_group">
-                  <input type="email" id="email">
-                  <button>
-                      <i class="fa-regular fa-envelope">Enviar</i>
-                  </button>
-              </div>
+             <div id="input_group">
+                <input type="email" id="email" placeholder="Digite seu email">
+                 <button onclick="inscrever()">Inscrever</button>
+            </div>
           </div>
       </div>
 
