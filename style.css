@@ -207,7 +207,7 @@ header{
 
 
   h2, h3 {
-    color: black;
+    color: var(--color-neutral-30);
   }
   h1{
     font-size: 50px;
