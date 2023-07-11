@@ -170,9 +170,13 @@
       elemento.style.display = 'block';
       alert('Por favor, anexe o comprovante de renda e o comprovante de cadastro.');
     } else {
+      if(valorSelecionado == '/'){
+        alert('Insira um valor válido');
+      }
+      else{
       campoInput.required = false;
       alert('Não precisa passar pela etapa de anexar o comprovante de renda e comprovante de cadastro.');
-      elemento.style.display = 'none';
+      elemento.style.display = 'none';}
     }
   }
     function inscrever() {
